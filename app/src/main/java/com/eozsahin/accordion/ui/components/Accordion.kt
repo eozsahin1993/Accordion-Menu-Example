@@ -2,6 +2,7 @@ package com.eozsahin.accordion.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.expandVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,15 @@ data class AccordionModel(
         val security: String,
         val stockPrice: String
     )
+}
+
+@Composable
+fun AccordionGroup(modifier: Modifier = Modifier, group: List<AccordionModel>) {
+    Column(modifier = modifier) {
+        group.forEach {
+            Accordion(model = it)
+        }
+    }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -95,7 +105,6 @@ fun AccordionHeader(
             }
         }
     }
-
 }
 
 @Preview

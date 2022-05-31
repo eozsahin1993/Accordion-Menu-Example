@@ -3,11 +3,8 @@ package com.eozsahin.accordion
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -15,7 +12,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.eozsahin.accordion.ui.components.Accordion
+import com.eozsahin.accordion.ui.components.AccordionGroup
 import com.eozsahin.accordion.ui.components.AccordionModel
 import com.eozsahin.accordion.ui.theme.AccordionTheme
 import com.eozsahin.accordion.ui.theme.Gray50
@@ -54,6 +51,8 @@ val modelDividendStocks = AccordionModel(
     )
 )
 
+val group = listOf(modelTechStocks, modelEnergyStocks, modelDividendStocks)
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,12 +74,7 @@ fun Content() {
         }
     ) {
         Surface(Modifier.fillMaxSize(), color = Gray50) {
-            Column(Modifier.fillMaxSize().background(Gray50)) {
-                Spacer(Modifier.height(8.dp))
-                Accordion(model = modelTechStocks)
-                Accordion(model = modelEnergyStocks)
-                Accordion(model = modelDividendStocks)
-            }
+            AccordionGroup(modifier = Modifier.padding(top = 8.dp), group = group)
         }
     }
 }
