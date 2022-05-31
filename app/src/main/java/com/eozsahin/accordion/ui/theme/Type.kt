@@ -8,19 +8,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.eozsahin.accordion.R
 
-val fontFamily = FontFamily(
+val quickSandFontFamily = FontFamily(
     Font(R.font.quicksand_regular, FontWeight.Normal),
     Font(R.font.quicksand_bold, FontWeight.Bold)
-)
-
-val bebasNeue = FontFamily(
-    Font(R.font.bebasneue_regular, FontWeight.Normal)
 )
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = fontFamily,
+        fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),
@@ -39,6 +35,8 @@ val Typography = Typography(
     */
 )
 
-val tags = Typography.body1.copy(fontFamily = bebasNeue)
+val tags = Typography.body1.copy(fontFamily = quickSandFontFamily, fontWeight = FontWeight.Bold)
 
 val bodyBold = Typography.body1.copy(fontWeight = FontWeight.Bold)
+
+val accordionHeaderStyle = Typography.h6.copy(fontWeight = FontWeight.Bold)
