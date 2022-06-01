@@ -28,11 +28,11 @@ import com.eozsahin.accordion.ui.theme.*
 
 data class AccordionModel(
     val header: String,
-    val columns: List<Row>
+    val rows: List<Row>
 ) {
     data class Row(
         val security: String,
-        val stockPrice: String
+        val price: String
     )
 }
 
@@ -63,7 +63,7 @@ fun Accordion(modifier: Modifier = Modifier, model: AccordionModel) {
                 modifier = Modifier.padding(top = 8.dp)
             ) {
                 LazyColumn {
-                    items(model.columns) { row ->
+                    items(model.rows) { row ->
                         AccordionRow(row)
                         Divider(color = Gray200, thickness = 1.dp)
                     }
@@ -119,7 +119,7 @@ private fun AccordionRow(
         Text(model.security, Modifier.weight(1f), style = tags, color = MedGray3)
         Surface(color = Green500, shape = RoundedCornerShape(8.dp), elevation = 2.dp) {
             Text(
-                text = model.stockPrice,
+                text = model.price,
                 modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
                 style = bodyBold,
                 color = White

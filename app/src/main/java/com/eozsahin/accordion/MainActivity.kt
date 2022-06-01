@@ -17,7 +17,7 @@ import com.eozsahin.accordion.ui.theme.AccordionTheme
 
 val modelTechStocks = AccordionModel(
     header = "Technology Stocks",
-    columns = mutableListOf(
+    rows = mutableListOf(
         AccordionModel.Row(security = "AAPL", "$328.00"),
         AccordionModel.Row(security = "GOOGL", "$328.00"),
         AccordionModel.Row(security = "NFLX", "$198.00"),
@@ -28,7 +28,7 @@ val modelTechStocks = AccordionModel(
 
 val modelEnergyStocks = AccordionModel(
     header = "Energy Stocks",
-    columns = mutableListOf(
+    rows = mutableListOf(
         AccordionModel.Row(security = "MPC", "$96.56"),
         AccordionModel.Row(security = "CVX", "179.71"),
         AccordionModel.Row(security = "DVN", "$77.13"),
@@ -39,7 +39,7 @@ val modelEnergyStocks = AccordionModel(
 
 val modelDividendStocks = AccordionModel(
     header = "Dividend Stocks",
-    columns = mutableListOf(
+    rows = mutableListOf(
         AccordionModel.Row(security = "JNJ", "$178.83"),
         AccordionModel.Row(security = "PG", "$148.63"),
         AccordionModel.Row(security = "KO", "$64.12"),
