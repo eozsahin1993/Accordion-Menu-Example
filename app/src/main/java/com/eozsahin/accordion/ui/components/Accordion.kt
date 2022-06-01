@@ -2,7 +2,6 @@ package com.eozsahin.accordion.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.expandVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -22,7 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.eozsahin.accordion.ui.theme.*
@@ -57,10 +56,10 @@ fun Accordion(modifier: Modifier = Modifier, model: AccordionModel) {
         }
         AnimatedVisibility(visible = expanded) {
             Surface(
-                color = Color.White,
+                color = White,
                 shape = RoundedCornerShape(8.dp),
                 border = BorderStroke(1.dp, Gray200),
-                elevation = 8.dp,
+                elevation = 1.dp,
                 modifier = Modifier.padding(top = 8.dp)
             ) {
                 LazyColumn {
@@ -76,7 +75,7 @@ fun Accordion(modifier: Modifier = Modifier, model: AccordionModel) {
 
 @Preview
 @Composable
-fun AccordionHeader(
+private fun AccordionHeader(
     title: String = "Header",
     isExpanded: Boolean = false,
     onTapped: () -> Unit = {}
@@ -84,23 +83,24 @@ fun AccordionHeader(
     val degrees = if (isExpanded) 180f else 0f
 
     Surface(
-        color = Color.White,
+        color = White,
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Gray200),
         elevation = 8.dp,
-        modifier = Modifier.clickable { onTapped() }
     ) {
         Row(
-            Modifier.padding(16.dp),
+            modifier = Modifier
+                .clickable { onTapped() }
+                .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(title, Modifier.weight(1f), style = accordionHeaderStyle, color = Gray600)
-            Surface(shape = CircleShape, color = LightBlue900.copy(alpha = 0.65f)) {
+            Surface(shape = CircleShape, color = LightBlue900.copy(alpha = 0.6f)) {
                 Icon(
                     Icons.Outlined.ArrowDropDown,
                     contentDescription = "arrow-down",
                     modifier = Modifier.rotate(degrees),
-                    tint = Color.White
+                    tint = White
                 )
             }
         }
@@ -109,20 +109,20 @@ fun AccordionHeader(
 
 @Preview
 @Composable
-fun AccordionRow(
+private fun AccordionRow(
     model: AccordionModel.Row = AccordionModel.Row("AAPL", "$328.89")
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(8.dp)
     ) {
-        Text(model.security, Modifier.weight(1f), style = bodyBold, color = MedGray3)
+        Text(model.security, Modifier.weight(1f), style = tags, color = MedGray3)
         Surface(color = Green500, shape = RoundedCornerShape(8.dp), elevation = 2.dp) {
             Text(
                 text = model.stockPrice,
                 modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
-                style = tags,
-                color = Color.White
+                style = bodyBold,
+                color = White
             )
         }
     }

@@ -3,10 +3,8 @@ package com.eozsahin.accordion
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -15,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.eozsahin.accordion.ui.components.AccordionGroup
 import com.eozsahin.accordion.ui.components.AccordionModel
 import com.eozsahin.accordion.ui.theme.AccordionTheme
-import com.eozsahin.accordion.ui.theme.Gray50
 
 
 val modelTechStocks = AccordionModel(
@@ -73,9 +70,7 @@ fun Content() {
             )
         }
     ) {
-        Surface(Modifier.fillMaxSize(), color = Gray50) {
-            AccordionGroup(modifier = Modifier.padding(top = 8.dp), group = group)
-        }
+        AccordionGroup(modifier = Modifier.padding(top = 8.dp), group = group)
     }
 }
 
